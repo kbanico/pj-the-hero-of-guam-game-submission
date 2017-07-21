@@ -1,3 +1,4 @@
+IMAGES
 beach background
 https://opengameart.org/content/beach-background
 
@@ -10,11 +11,16 @@ https://kenney.nl/assets/onscreen-controls
 spider
 https://opengameart.org/content/enemy-game-character-cute-spider
 
-pew pew sound
-http://freesound.org/people/OBXJohn/sounds/365636/
-
 bullet image
 https://kenney.nl/assets/puzzle-pack
 
 hut
 https://opengameart.org/content/straw-hut
+
+
+SOUNDS
+pew pew sound
+http://freesound.org/people/OBXJohn/sounds/365636/
+
+background music
+http://freesound.org/people/B_Lamerichs/sounds/220322/
