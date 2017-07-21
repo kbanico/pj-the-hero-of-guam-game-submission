@@ -21,6 +21,6 @@ var game = new Phaser.Game(dim.w,dim.h, Phaser.CANVAS);
 //var game = new Phaser.Game(640,360, Phaser.CANVAS);
 game.state.add("Boot", BootState);
 game.state.add("Preload", PreloadState);
-game.state.add("Level4", Level4)
+game.state.add("Game", Game)
 game.state.add("MainMenu", MainMenu)
 game.state.start("Boot")

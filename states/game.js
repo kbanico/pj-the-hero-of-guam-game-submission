@@ -1,4 +1,4 @@
-Level4 = {
+Game = {
     preload:function(){
         
     },
@@ -229,7 +229,7 @@ Level4 = {
             var deathTween = game.add.tween(this.spider).to({angle: "+180"},850,Phaser.Easing.Linear.None).to({y:game.world.height-100}).to({y:game.world.height - 150}).to({y:game.world.height-100}).start();
             //this.spider.animations.stop()
             this.game.time.events.add(3000,function(){
-                var goodJob = this.game.add.text(this.game.world.centerX,this.game.world.centerY,"YOU WIN",{font:"40px Arial",fill:"#fff"})
+                var goodJob = this.game.add.text(this.game.world.centerX,this.game.world.centerY,"YOU WIN",{font:"40px Orbitron",fill:"#fff"})
                 goodJob.anchor.setTo(0.5)
             },this);
             
