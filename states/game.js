@@ -97,6 +97,7 @@ Game = {
             this.howToPlay = game.add.text(game.world.centerX,100,"Use Up arrow to shoot,\n Left and Right arrow to run",{font:"20px Orbitron",fill:"#ff8d4f",align:"center"})
             this.howToPlay.anchor.setTo(0.5)
         }
+
              
         
     },update:function(){
@@ -167,7 +168,15 @@ Game = {
                 this.spider.tween3.onComplete.addOnce(function(){
                     this.spider.tween3 = game.add.tween(this.spider.scale).to({x:2,y:2}).start();
                     this.spider.tween3.onComplete.addOnce(function(){
-                        this.spider.tween3.stop()
+                        if(this.spider.tween1){
+                            this.spider.tween1.stop();
+                       } 
+                        if(this.spider.tween2){
+                            this.spider.tween2.stop();
+                       } 
+                        if(this.spider.tween3){
+                            this.spider.tween3.stop();
+                       }
                         this.song.stop();
                         game.time.events.add(3000,function(){game.state.start("MainMenu");})
 
@@ -247,12 +256,22 @@ Game = {
             var deathTween = game.add.tween(this.spider).to({angle: "+180"},850,Phaser.Easing.Linear.None).to({y:game.world.height-100}).to({y:game.world.height - 150}).to({y:game.world.height-100}).start();
             //this.spider.animations.stop()
             this.game.time.events.add(3000,function(){
+                this.song.stop();
                 var goodJob = this.game.add.text(this.game.world.centerX,this.game.world.centerY,"YOU WIN",{font:"40px Orbitron",fill:"#fff"})
                 goodJob.anchor.setTo(0.5)
             },this);
             
             //restart
             game.time.events.add(5000,function(){
+                if(this.spider.tween1){
+                    this.spider.tween1.stop();
+               } 
+                if(this.spider.tween2){
+                    this.spider.tween2.stop();
+               } 
+                if(this.spider.tween3){
+                    this.spider.tween3.stop();
+               }
                 game.state.start("MainMenu");
             },this)
         }   
