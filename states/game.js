@@ -67,9 +67,10 @@ Game = {
         this.bonuses.enableBody = true;
         this.bonus = 1;    
         this.game.time.events.loop(12000,this.newBonus,this);      
-        this.questText = game.add.text(20,20,"Defeat The Spider Before He Steals All The Huts",{font:"20px Orbitron",fill:"#fff"})
-        game.time.events.add(5000,function(){
-            this.questText.visible = false;
+        this.questText = game.add.text(20,20,"Defeat The Spider Before He Steals All The Huts",{font:"20px Orbitron",fill:"#ff8d4f"})
+        game.time.events.add(7000,function(){
+            game.add.tween(this.questText).to({alpha:0}).start()
+            game.add.tween(this.howToPlay).to({alpha:0}).start()
         },this)    
         //sounds
         this.dukduk = game.add.audio("drill")     
@@ -81,8 +82,14 @@ Game = {
         this.player.body.allowGravity = false;
         this.player.body.collideWorldBounds = true;
         this.player.animations.add("walking",[0,1,2],10,true)  
-        this.player.customProperties = {}    
-        this.createOnScreenControls();     
+        this.player.customProperties = {} 
+        if (!game.device.desktop) {
+            this.createOnScreenControls();
+        }else{
+            this.howToPlay = game.add.text(game.world.centerX,100,"Use Up arrow to shoot,\n Left and Right arrow to run",{font:"20px Orbitron",fill:"#ff8d4f",align:"center"})
+            this.howToPlay.anchor.setTo(0.5)
+        }
+             
         
     },update:function(){
         //overlaps
