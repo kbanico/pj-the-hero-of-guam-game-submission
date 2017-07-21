@@ -97,6 +97,8 @@ Game = {
             this.howToPlay = game.add.text(game.world.centerX,100,"Use Up arrow to shoot,\n Left and Right arrow to run",{font:"20px Orbitron",fill:"#ff8d4f",align:"center"})
             this.howToPlay.anchor.setTo(0.5)
         }
+        
+        //this.guam = game.add.text(game.width/2-50,game.height/2,"GUAM")
 
              
         
