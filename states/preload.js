@@ -15,7 +15,8 @@ var PreloadState = {
         this.game.load.image("shell2","assets/shell2.png")
         this.game.load.image("shell3","assets/shell3.png")
          //sounds 
-        this.game.load.audio("drill","assets/sounds/drill.ogg");   
+        this.game.load.audio("pew","assets/sounds/pew.ogg");   
+        this.game.load.audio("song","assets/sounds/song.ogg");   
     },
     create:function(){
         this.game.state.start("MainMenu");

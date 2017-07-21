@@ -70,10 +70,18 @@ Game = {
         this.questText = game.add.text(20,20,"Defeat The Spider Before He Steals All The Huts",{font:"20px Orbitron",fill:"#ff8d4f"})
         game.time.events.add(7000,function(){
             game.add.tween(this.questText).to({alpha:0}).start()
-            game.add.tween(this.howToPlay).to({alpha:0}).start()
+            if(game.device.desktop){
+               game.add.tween(this.howToPlay).to({alpha:0}).start() 
+            }
+            
         },this)    
         //sounds
-        this.dukduk = game.add.audio("drill")     
+        this.pew = game.add.audio("pew")  
+        this.song = game.add.audio("song")
+        this.song.volume = 0.3
+        this.song.loopFull()
+        this.song.play()
+
         //add the player
         this.player = this.game.add.sprite(100,330,"player")
         this.player.scale.setTo(0.3);
@@ -152,12 +160,15 @@ Game = {
                 },this)
             }else if(this.countAlive == this.huts.length){
                 //we lose
+                
                 this.spider.body = false;
                 this.spider.tween3 = game.add.tween(this.spider)
                 this.spider.tween3.to({x:game.world.centerX,y:game.world.centerY}).start()
                 this.spider.tween3.onComplete.addOnce(function(){
                     this.spider.tween3 = game.add.tween(this.spider.scale).to({x:2,y:2}).start();
                     this.spider.tween3.onComplete.addOnce(function(){
+                        this.spider.tween3.stop()
+                        this.song.stop();
                         game.time.events.add(3000,function(){game.state.start("MainMenu");})
 
                     },this)
@@ -204,10 +215,10 @@ Game = {
         bullet.body.setSize(50,50,bullet.width / 3 + 20,bullet.height / 3 + 10)
         //will only play the duk duk sound with single bullets
         if(this.bonus === 1){
-            this.dukduk.volume = 0.5
+            this.pew.volume = 0.5
             shouldplay = Math.floor(Math.random()*10)
             if(shouldplay==5){
-                this.dukduk.play()
+                this.pew.play()
             }         
         }
     },
