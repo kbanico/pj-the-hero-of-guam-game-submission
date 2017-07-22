@@ -163,13 +163,21 @@ Game = {
                 },this)
             }else if(this.countAlive == this.huts.length){
                 //we lose
-                
-                this.spider.body = false;
+                  if(this.spider.tween1){
+                        this.spider.tween1.stop();
+                   } 
+                    if(this.spider.tween2){
+                        this.spider.tween2.stop();
+                   } 
+                    if(this.spider.tween3){
+                        this.spider.tween3.stop();
+                   }
+            this.spider.body = false;
                 this.spider.tween3 = game.add.tween(this.spider)
                 this.spider.tween3.to({x:game.world.centerX,y:game.world.centerY}).start()
                 this.spider.tween3.onComplete.addOnce(function(){
-                    this.spider.tween3 = game.add.tween(this.spider.scale).to({x:2,y:2}).start();
-                    this.spider.tween3.onComplete.addOnce(function(){
+                    this.spider.tween2 = game.add.tween(this.spider.scale).to({x:2,y:2}).start();
+                    this.spider.tween2.onComplete.addOnce(function(){
                         if(this.spider.tween1){
                             this.spider.tween1.stop();
                        } 
